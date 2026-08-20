@@ -1,0 +1,22 @@
+{
+  "/_not-found/page": "app/_not-found/page.js",
+  "/api/admin/deposit/route": "app/api/admin/deposit/route.js",
+  "/admin/page": "app/admin/page.js",
+  "/api/admin/orders/route": "app/api/admin/orders/route.js",
+  "/api/admin/ledger/route": "app/api/admin/ledger/route.js",
+  "/api/admin/skus/route": "app/api/admin/skus/route.js",
+  "/api/admin/stats/route": "app/api/admin/stats/route.js",
+  "/api/fulfillment/worker/route": "app/api/fulfillment/worker/route.js",
+  "/api/orders/[orderNumber]/pay/route": "app/api/orders/[orderNumber]/pay/route.js",
+  "/api/orders/[orderNumber]/route": "app/api/orders/[orderNumber]/route.js",
+  "/api/orders/create/route": "app/api/orders/create/route.js",
+  "/api/products/[slug]/route": "app/api/products/[slug]/route.js",
+  "/api/products/route": "app/api/products/route.js",
+  "/api/wallet/route": "app/api/wallet/route.js",
+  "/api/webhooks/payment/route": "app/api/webhooks/payment/route.js",
+  "/checkout/[orderNumber]/page": "app/checkout/[orderNumber]/page.js",
+  "/page": "app/page.js",
+  "/track/page": "app/track/page.js",
+  "/topup/[slug]/page": "app/topup/[slug]/page.js",
+  "/api/validate-account/route": "app/api/validate-account/route.js"
+}

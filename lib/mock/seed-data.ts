@@ -1,0 +1,659 @@
+import { Product, PaymentMethod } from '../types';
+
+export const INITIAL_PRODUCTS: Product[] = [
+  {
+    id: 'prod-mlbb',
+    slug: 'mobile-legends',
+    name: 'Mobile Legends: Bang Bang',
+    publisher: 'Moonton',
+    category: 'MOBILE',
+    bannerImage: 'https://images.unsplash.com/photo-1542751371-adc38448a05e?q=80&w=1200&auto=format&fit=crop',
+    iconImage: 'https://images.unsplash.com/photo-1579373903781-fd5c0c30c4cd?q=80&w=300&auto=format&fit=crop',
+    description: 'Instant Mobile Legends Diamonds top-up. Official Moonton direct fulfillment with instant in-game delivery.',
+    isTrending: true,
+    badge: 'HOT PROMO',
+    rating: 4.9,
+    instantDelivery: true,
+    isActive: true,
+    formSchema: [
+      {
+        name: 'userId',
+        label: 'User ID',
+        type: 'number',
+        placeholder: 'e.g. 12345678',
+        required: true,
+        helperText: 'Found on your in-game profile page (the first numbers).'
+      },
+      {
+        name: 'zoneId',
+        label: 'Zone ID',
+        type: 'number',
+        placeholder: 'e.g. 2024',
+        required: true,
+        helperText: '4-5 digit number inside brackets next to your User ID.'
+      }
+    ],
+    skus: [
+      {
+        id: 'sku-ml-86',
+        productId: 'prod-mlbb',
+        name: '86 Diamonds (78 + 8 Bonus)',
+        providerSkuCode: 'MLBB_86_DIA',
+        baseCost: 18000,
+        sellingPrice: 20500,
+        originalPrice: 24000,
+        bonusText: '+8 Bonus',
+        isAvailable: true,
+        stockCount: 9999
+      },
+      {
+        id: 'sku-ml-172',
+        productId: 'prod-mlbb',
+        name: '172 Diamonds (156 + 16 Bonus)',
+        providerSkuCode: 'MLBB_172_DIA',
+        baseCost: 36000,
+        sellingPrice: 41000,
+        originalPrice: 48000,
+        bonusText: '+16 Bonus',
+        isAvailable: true,
+        stockCount: 9999
+      },
+      {
+        id: 'sku-ml-257',
+        productId: 'prod-mlbb',
+        name: '257 Diamonds (234 + 23 Bonus)',
+        providerSkuCode: 'MLBB_257_DIA',
+        baseCost: 54000,
+        sellingPrice: 61500,
+        originalPrice: 72000,
+        bonusText: 'Popular',
+        isAvailable: true,
+        stockCount: 9999
+      },
+      {
+        id: 'sku-ml-706',
+        productId: 'prod-mlbb',
+        name: '706 Diamonds (625 + 81 Bonus)',
+        providerSkuCode: 'MLBB_706_DIA',
+        baseCost: 145000,
+        sellingPrice: 165000,
+        originalPrice: 195000,
+        bonusText: 'Best Value',
+        isAvailable: true,
+        stockCount: 9999
+      },
+      {
+        id: 'sku-ml-pass',
+        productId: 'prod-mlbb',
+        name: 'Weekly Diamond Pass',
+        providerSkuCode: 'MLBB_WEEKLY_PASS',
+        baseCost: 26000,
+        sellingPrice: 29900,
+        originalPrice: 35000,
+        bonusText: '7x Daily Rewards',
+        isAvailable: true,
+        stockCount: 9999
+      },
+      {
+        id: 'sku-ml-2195',
+        productId: 'prod-mlbb',
+        name: '2,195 Diamonds (1860 + 335 Bonus)',
+        providerSkuCode: 'MLBB_2195_DIA',
+        baseCost: 450000,
+        sellingPrice: 510000,
+        originalPrice: 600000,
+        bonusText: 'Mega Pack',
+        isAvailable: true,
+        stockCount: 9999
+      }
+    ]
+  },
+  {
+    id: 'prod-genshin',
+    slug: 'genshin-impact',
+    name: 'Genshin Impact',
+    publisher: 'HoYoverse / COGNOSPHERE',
+    category: 'PC',
+    bannerImage: 'https://images.unsplash.com/photo-1538481199705-c710c4e965fc?q=80&w=1200&auto=format&fit=crop',
+    iconImage: 'https://images.unsplash.com/photo-1563089145-599997674d42?q=80&w=300&auto=format&fit=crop',
+    description: 'Genesis Crystals and Blessing of the Welkin Moon with instant HoYoverse UID direct delivery.',
+    isTrending: true,
+    badge: 'BESTSELLER',
+    rating: 5.0,
+    instantDelivery: true,
+    isActive: true,
+    formSchema: [
+      {
+        name: 'uid',
+        label: 'UID (User ID)',
+        type: 'number',
+        placeholder: 'e.g. 800123456',
+        required: true,
+        helperText: 'Found on the bottom right corner of your game screen or Paimon menu.'
+      },
+      {
+        name: 'server',
+        label: 'Server Region',
+        type: 'select',
+        required: true,
+        options: [
+          { label: 'Asia (os_asia)', value: 'os_asia' },
+          { label: 'America (os_usa)', value: 'os_usa' },
+          { label: 'Europe (os_euro)', value: 'os_euro' },
+          { label: 'TW, HK, MO (os_cht)', value: 'os_cht' }
+        ]
+      }
+    ],
+    skus: [
+      {
+        id: 'sku-gi-welkin',
+        productId: 'prod-genshin',
+        name: 'Blessing of the Welkin Moon',
+        providerSkuCode: 'GI_WELKIN_MOON',
+        baseCost: 65000,
+        sellingPrice: 74900,
+        originalPrice: 89000,
+        bonusText: '3000 Primogems (30 Days)',
+        isAvailable: true,
+        stockCount: 9999
+      },
+      {
+        id: 'sku-gi-300',
+        productId: 'prod-genshin',
+        name: '300 + 30 Genesis Crystals',
+        providerSkuCode: 'GI_300_CRYSTALS',
+        baseCost: 65000,
+        sellingPrice: 75000,
+        originalPrice: 85000,
+        bonusText: '2x Bonus (First Topup)',
+        isAvailable: true,
+        stockCount: 9999
+      },
+      {
+        id: 'sku-gi-980',
+        productId: 'prod-genshin',
+        name: '980 + 110 Genesis Crystals',
+        providerSkuCode: 'GI_980_CRYSTALS',
+        baseCost: 200000,
+        sellingPrice: 229000,
+        originalPrice: 260000,
+        bonusText: '+110 Extra',
+        isAvailable: true,
+        stockCount: 9999
+      },
+      {
+        id: 'sku-gi-1980',
+        productId: 'prod-genshin',
+        name: '1,980 + 260 Genesis Crystals',
+        providerSkuCode: 'GI_1980_CRYSTALS',
+        baseCost: 400000,
+        sellingPrice: 459000,
+        originalPrice: 520000,
+        bonusText: '+260 Extra',
+        isAvailable: true,
+        stockCount: 9999
+      },
+      {
+        id: 'sku-gi-3280',
+        productId: 'prod-genshin',
+        name: '3,280 + 600 Genesis Crystals',
+        providerSkuCode: 'GI_3280_CRYSTALS',
+        baseCost: 650000,
+        sellingPrice: 749000,
+        originalPrice: 850000,
+        bonusText: '+600 Extra',
+        isAvailable: true,
+        stockCount: 9999
+      }
+    ]
+  },
+  {
+    id: 'prod-valorant',
+    slug: 'valorant',
+    name: 'Valorant',
+    publisher: 'Riot Games',
+    category: 'PC',
+    bannerImage: 'https://images.unsplash.com/photo-1511512578047-dfb367046420?q=80&w=1200&auto=format&fit=crop',
+    iconImage: 'https://images.unsplash.com/photo-1550745165-9bc0b252726f?q=80&w=300&auto=format&fit=crop',
+    description: 'Instant Valorant Points (VP) delivery using Riot ID. Unlock weapon skins, battle passes and agents.',
+    isTrending: true,
+    badge: 'POPULAR',
+    rating: 4.8,
+    instantDelivery: true,
+    isActive: true,
+    formSchema: [
+      {
+        name: 'riotId',
+        label: 'Riot ID',
+        type: 'text',
+        placeholder: 'e.g. Phoenix#APAC',
+        required: true,
+        helperText: 'Your Riot username followed by hashtag and tagline (e.g. Jett#1234)'
+      }
+    ],
+    skus: [
+      {
+        id: 'sku-val-475',
+        productId: 'prod-valorant',
+        name: '475 Valorant Points',
+        providerSkuCode: 'VAL_475_VP',
+        baseCost: 45000,
+        sellingPrice: 52000,
+        originalPrice: 60000,
+        isAvailable: true,
+        stockCount: 9999
+      },
+      {
+        id: 'sku-val-1000',
+        productId: 'prod-valorant',
+        name: '1,000 Valorant Points (Battlepass Ready)',
+        providerSkuCode: 'VAL_1000_VP',
+        baseCost: 95000,
+        sellingPrice: 108000,
+        originalPrice: 125000,
+        bonusText: 'Battlepass',
+        isAvailable: true,
+        stockCount: 9999
+      },
+      {
+        id: 'sku-val-2050',
+        productId: 'prod-valorant',
+        name: '2,050 Valorant Points',
+        providerSkuCode: 'VAL_2050_VP',
+        baseCost: 190000,
+        sellingPrice: 215000,
+        originalPrice: 250000,
+        bonusText: 'Popular',
+        isAvailable: true,
+        stockCount: 9999
+      },
+      {
+        id: 'sku-val-5350',
+        productId: 'prod-valorant',
+        name: '5,350 Valorant Points (Premium Bundle)',
+        providerSkuCode: 'VAL_5350_VP',
+        baseCost: 475000,
+        sellingPrice: 535000,
+        originalPrice: 620000,
+        bonusText: 'Premium Bundle',
+        isAvailable: true,
+        stockCount: 9999
+      }
+    ]
+  },
+  {
+    id: 'prod-freefire',
+    slug: 'free-fire',
+    name: 'Free Fire',
+    publisher: 'Garena',
+    category: 'MOBILE',
+    bannerImage: 'https://images.unsplash.com/photo-1542751110-97427bbecf20?q=80&w=1200&auto=format&fit=crop',
+    iconImage: 'https://images.unsplash.com/photo-1612287233215-68048259166f?q=80&w=300&auto=format&fit=crop',
+    description: 'Direct Garena Free Fire Diamond top-up. Automatic delivery in seconds using Player ID.',
+    isTrending: false,
+    rating: 4.7,
+    instantDelivery: true,
+    isActive: true,
+    formSchema: [
+      {
+        name: 'playerId',
+        label: 'Player ID',
+        type: 'number',
+        placeholder: 'e.g. 987654321',
+        required: true,
+        helperText: 'Your 8-10 digit Free Fire Player ID from your in-game profile.'
+      }
+    ],
+    skus: [
+      {
+        id: 'sku-ff-70',
+        productId: 'prod-freefire',
+        name: '70 Diamonds',
+        providerSkuCode: 'FF_70_DIA',
+        baseCost: 9000,
+        sellingPrice: 10500,
+        originalPrice: 14000,
+        isAvailable: true,
+        stockCount: 9999
+      },
+      {
+        id: 'sku-ff-140',
+        productId: 'prod-freefire',
+        name: '140 Diamonds',
+        providerSkuCode: 'FF_140_DIA',
+        baseCost: 18000,
+        sellingPrice: 20900,
+        originalPrice: 28000,
+        isAvailable: true,
+        stockCount: 9999
+      },
+      {
+        id: 'sku-ff-355',
+        productId: 'prod-freefire',
+        name: '355 Diamonds (310 + 45 Bonus)',
+        providerSkuCode: 'FF_355_DIA',
+        baseCost: 45000,
+        sellingPrice: 51900,
+        originalPrice: 65000,
+        bonusText: '+45 Bonus',
+        isAvailable: true,
+        stockCount: 9999
+      },
+      {
+        id: 'sku-ff-720',
+        productId: 'prod-freefire',
+        name: '720 Diamonds',
+        providerSkuCode: 'FF_720_DIA',
+        baseCost: 90000,
+        sellingPrice: 102500,
+        originalPrice: 130000,
+        bonusText: 'Popular',
+        isAvailable: true,
+        stockCount: 9999
+      }
+    ]
+  },
+  {
+    id: 'prod-pubgm',
+    slug: 'pubg-mobile',
+    name: 'PUBG Mobile',
+    publisher: 'Level Infinite / Krafton',
+    category: 'MOBILE',
+    bannerImage: 'https://images.unsplash.com/photo-1560253023-3ec5d502959f?q=80&w=1200&auto=format&fit=crop',
+    iconImage: 'https://images.unsplash.com/photo-1592478411213-6153e4ebc07d?q=80&w=300&auto=format&fit=crop',
+    description: 'PUBG Mobile Unknown Cash (UC) top-up. Direct delivery to your account character ID.',
+    isTrending: false,
+    rating: 4.8,
+    instantDelivery: true,
+    isActive: true,
+    formSchema: [
+      {
+        name: 'playerId',
+        label: 'Character ID',
+        type: 'number',
+        placeholder: 'e.g. 5123456789',
+        required: true,
+        helperText: 'Found on your profile avatar in the upper left of the lobby screen.'
+      }
+    ],
+    skus: [
+      {
+        id: 'sku-pubg-60',
+        productId: 'prod-pubgm',
+        name: '60 Unknown Cash (UC)',
+        providerSkuCode: 'PUBG_60_UC',
+        baseCost: 13500,
+        sellingPrice: 15500,
+        originalPrice: 18000,
+        isAvailable: true,
+        stockCount: 9999
+      },
+      {
+        id: 'sku-pubg-325',
+        productId: 'prod-pubgm',
+        name: '325 Unknown Cash (300 + 25 UC)',
+        providerSkuCode: 'PUBG_325_UC',
+        baseCost: 68000,
+        sellingPrice: 78000,
+        originalPrice: 90000,
+        bonusText: 'Royale Pass Ready',
+        isAvailable: true,
+        stockCount: 9999
+      },
+      {
+        id: 'sku-pubg-660',
+        productId: 'prod-pubgm',
+        name: '660 Unknown Cash (600 + 60 UC)',
+        providerSkuCode: 'PUBG_660_UC',
+        baseCost: 135000,
+        sellingPrice: 154000,
+        originalPrice: 180000,
+        bonusText: 'Popular',
+        isAvailable: true,
+        stockCount: 9999
+      }
+    ]
+  },
+  {
+    id: 'prod-roblox',
+    slug: 'roblox',
+    name: 'Roblox (Robux)',
+    publisher: 'Roblox Corporation',
+    category: 'PC',
+    bannerImage: 'https://images.unsplash.com/photo-1550745165-9bc0b252726f?q=80&w=1200&auto=format&fit=crop',
+    iconImage: 'https://images.unsplash.com/photo-1563089145-599997674d42?q=80&w=300&auto=format&fit=crop',
+    description: 'Instant Robux gift code & direct account crediting for Roblox avatars and game passes.',
+    isTrending: true,
+    badge: 'TRENDING',
+    rating: 4.9,
+    instantDelivery: true,
+    isActive: true,
+    formSchema: [
+      {
+        name: 'username',
+        label: 'Roblox Username',
+        type: 'text',
+        placeholder: 'e.g. BuilderMan99',
+        required: true,
+        helperText: 'Your exact Roblox account username (not display name).'
+      }
+    ],
+    skus: [
+      {
+        id: 'sku-rbx-400',
+        productId: 'prod-roblox',
+        name: '400 Robux',
+        providerSkuCode: 'RBX_400_ROBUX',
+        baseCost: 65000,
+        sellingPrice: 75000,
+        originalPrice: 85000,
+        isAvailable: true,
+        stockCount: 9999
+      },
+      {
+        id: 'sku-rbx-800',
+        productId: 'prod-roblox',
+        name: '800 Robux',
+        providerSkuCode: 'RBX_800_ROBUX',
+        baseCost: 130000,
+        sellingPrice: 149000,
+        originalPrice: 170000,
+        bonusText: 'Popular',
+        isAvailable: true,
+        stockCount: 9999
+      },
+      {
+        id: 'sku-rbx-2000',
+        productId: 'prod-roblox',
+        name: '2,000 Robux',
+        providerSkuCode: 'RBX_2000_ROBUX',
+        baseCost: 320000,
+        sellingPrice: 368000,
+        originalPrice: 420000,
+        bonusText: 'Best Value',
+        isAvailable: true,
+        stockCount: 9999
+      }
+    ]
+  },
+  {
+    id: 'prod-steam',
+    slug: 'steam-wallet',
+    name: 'Steam Wallet Code',
+    publisher: 'Valve Corporation',
+    category: 'VOUCHER',
+    bannerImage: 'https://images.unsplash.com/photo-1552824796-bcf06f47738f?q=80&w=1200&auto=format&fit=crop',
+    iconImage: 'https://images.unsplash.com/photo-1542751371-adc38448a05e?q=80&w=300&auto=format&fit=crop',
+    description: 'Instant official Steam Wallet digital voucher code. Redeem on any Steam account globally.',
+    isTrending: false,
+    rating: 5.0,
+    instantDelivery: true,
+    isActive: true,
+    formSchema: [
+      {
+        name: 'email',
+        label: 'Delivery Email Address',
+        type: 'text',
+        placeholder: 'e.g. gamer@example.com',
+        required: true,
+        helperText: 'Your digital code will be sent here and displayed immediately on screen.'
+      }
+    ],
+    skus: [
+      {
+        id: 'sku-steam-50k',
+        productId: 'prod-steam',
+        name: 'Steam Wallet IDR 60,000',
+        providerSkuCode: 'STEAM_60K_IDR',
+        baseCost: 60000,
+        sellingPrice: 66000,
+        originalPrice: 70000,
+        isAvailable: true,
+        stockCount: 9999
+      },
+      {
+        id: 'sku-steam-120k',
+        productId: 'prod-steam',
+        name: 'Steam Wallet IDR 120,000',
+        providerSkuCode: 'STEAM_120K_IDR',
+        baseCost: 120000,
+        sellingPrice: 131000,
+        originalPrice: 140000,
+        isAvailable: true,
+        stockCount: 9999
+      },
+      {
+        id: 'sku-steam-250k',
+        productId: 'prod-steam',
+        name: 'Steam Wallet IDR 250,000',
+        providerSkuCode: 'STEAM_250K_IDR',
+        baseCost: 250000,
+        sellingPrice: 272000,
+        originalPrice: 290000,
+        bonusText: 'Popular',
+        isAvailable: true,
+        stockCount: 9999
+      }
+    ]
+  }
+];
+
+export const PAYMENT_METHODS: PaymentMethod[] = [
+  {
+    id: 'pay-qris',
+    name: 'QRIS (All E-Wallets & Banks)',
+    category: 'QRIS',
+    icon: 'QrCode',
+    feePercent: 0.7,
+    feeFlat: 500,
+    minAmount: 1000,
+    maxAmount: 10000000,
+    isActive: true,
+    instructions: [
+      'Open your mobile banking or e-wallet app (BCA, GoPay, OVO, DANA, ShopeePay, etc.).',
+      'Scan the dynamic QRIS QR code displayed on screen.',
+      'Verify the merchant name "IMPEROSIAS TOPUP" and exact payment amount.',
+      'Input your PIN and complete payment.',
+      'The order will be automatically verified within 3 seconds!'
+    ]
+  },
+  {
+    id: 'pay-gopay',
+    name: 'GoPay / GoPay Later',
+    category: 'EWALLET',
+    icon: 'Smartphone',
+    feePercent: 1.5,
+    feeFlat: 0,
+    minAmount: 5000,
+    maxAmount: 5000000,
+    isActive: true,
+    instructions: [
+      'Click "Pay with GoPay" to open GoPay / Gojek app or scan the QR code.',
+      'Confirm the transaction details.',
+      'Authenticate with Face ID / PIN.',
+      'Order fulfillment starts immediately.'
+    ]
+  },
+  {
+    id: 'pay-dana',
+    name: 'DANA E-Wallet',
+    category: 'EWALLET',
+    icon: 'Wallet',
+    feePercent: 1.5,
+    feeFlat: 0,
+    minAmount: 5000,
+    maxAmount: 5000000,
+    isActive: true,
+    instructions: [
+      'Open DANA app and navigate to Pay or scan QR.',
+      'Enter your DANA 6-digit security PIN.',
+      'Payment confirmed instantaneously.'
+    ]
+  },
+  {
+    id: 'pay-bca-va',
+    name: 'BCA Virtual Account',
+    category: 'VIRTUAL_ACCOUNT',
+    icon: 'Building2',
+    feePercent: 0,
+    feeFlat: 3500,
+    minAmount: 10000,
+    maxAmount: 50000000,
+    isActive: true,
+    instructions: [
+      'Login to BCA mobile / KlikBCA / ATM BCA.',
+      'Select Transfer -> BCA Virtual Account.',
+      'Enter the 16-digit Virtual Account number.',
+      'Verify the total amount matches exactly, then confirm payment.'
+    ]
+  },
+  {
+    id: 'pay-mandiri-va',
+    name: 'Mandiri Virtual Account (Livin)',
+    category: 'VIRTUAL_ACCOUNT',
+    icon: 'Building2',
+    feePercent: 0,
+    feeFlat: 3500,
+    minAmount: 10000,
+    maxAmount: 50000000,
+    isActive: true,
+    instructions: [
+      'Open Livin by Mandiri app.',
+      'Select Bayar -> Multipayment / Virtual Account.',
+      'Enter the generated Mandiri Virtual Account number.',
+      'Confirm payment and enter your MPIN.'
+    ]
+  },
+  {
+    id: 'pay-card',
+    name: 'Credit / Debit Card (Visa / Mastercard)',
+    category: 'CARD',
+    icon: 'CreditCard',
+    feePercent: 2.9,
+    feeFlat: 2000,
+    minAmount: 20000,
+    maxAmount: 20000000,
+    isActive: true,
+    instructions: [
+      'Enter your 16-digit card number, expiration date, and 3-digit CVV.',
+      'Complete 3D Secure OTP authentication sent by your card issuer bank.',
+      'Instant settlement.'
+    ]
+  },
+  {
+    id: 'pay-internal-wallet',
+    name: 'Imperosias Member Wallet (0% Fee)',
+    category: 'WALLET',
+    icon: 'ShieldCheck',
+    feePercent: 0,
+    feeFlat: 0,
+    minAmount: 1000,
+    maxAmount: 100000000,
+    isActive: true,
+    instructions: [
+      'Pay instantly using your Imperosias user wallet balance.',
+      'Zero payment processing fee with instant 1-click fulfillment.',
+      'Balance is debited immediately via double-entry ledger.'
+    ]
+  }
+];
